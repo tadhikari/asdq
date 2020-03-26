@@ -4,12 +4,21 @@ import { User } from './User';
 
 
 
+
+
 const user = new User();
 const company = new Company();
-const custommap = new CustomMap('map');
+const customMap = new CustomMap('map');
 
 console.log(user);
 console.log(company)
+
+customMap.addMarker(user);
+customMap.addMarker(company);
+
+
+
+
 
 // new google.maps.Map(document.getElementById('map'), {
 

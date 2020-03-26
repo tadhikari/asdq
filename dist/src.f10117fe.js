@@ -137,6 +137,25 @@ function () {
     });
   }
 
+  CustomMap.prototype.addMarker = function (mappable) {
+    var _this = this; //console.log("ttribi")
+
+
+    var marker = new google.maps.Marker({
+      map: this.googleMap,
+      position: {
+        lat: mappable.location.lat,
+        lng: mappable.location.lng
+      }
+    });
+    marker.addListener('click', function () {
+      var infoWindow = new google.maps.InfoWindow({
+        content: mappable.markerContent()
+      });
+      infoWindow.open(_this.googleMap, marker);
+    });
+  };
+
   return CustomMap;
 }();
 
@@ -85145,6 +85164,10 @@ function () {
     };
   }
 
+  Company.prototype.markerContent = function () {
+    return "Company Name: " + this.companyName;
+  };
+
   return Company;
 }();
 
@@ -85177,6 +85200,12 @@ function () {
     };
   }
 
+  ;
+
+  User.prototype.markerContent = function () {
+    return "User Name: " + this.name;
+  };
+
   return User;
 }();
 
@@ -85196,9 +85225,11 @@ var User_1 = require("./User");
 
 var user = new User_1.User();
 var company = new Company_1.Company();
-var custommap = new CustomMap_1.CustomMap('map');
+var customMap = new CustomMap_1.CustomMap('map');
 console.log(user);
-console.log(company); // new google.maps.Map(document.getElementById('map'), {
+console.log(company);
+customMap.addMarker(user);
+customMap.addMarker(company); // new google.maps.Map(document.getElementById('map'), {
 //     zoom: 1,
 //     center: {
 //         lat: 0,lng: 0
@@ -85232,7 +85263,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52089" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60820" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
