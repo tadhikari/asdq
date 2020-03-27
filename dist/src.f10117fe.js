@@ -85155,6 +85155,7 @@ var faker_1 = __importDefault(require("faker"));
 var Company =
 /** @class */
 function () {
+  //color: string;
   function Company() {
     this.companyName = faker_1.default.company.companyName();
     this.catchPhrase = faker_1.default.company.catchPhrase();
@@ -85191,6 +85192,8 @@ var User =
 /** @class */
 function () {
   function User() {
+    //color:string;
+    this.color = 'red';
     this.name = faker_1.default.name.firstName(); //this.
     //console.log(this.location);
 
@@ -85199,8 +85202,6 @@ function () {
       lng: parseFloat(faker_1.default.address.longitude())
     };
   }
-
-  ;
 
   User.prototype.markerContent = function () {
     return "User Name: " + this.name;
@@ -85263,7 +85264,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60820" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56155" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
